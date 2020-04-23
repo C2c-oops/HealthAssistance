@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">HealthAssistance</string>
+    <string name="profile">Profile</string>
+    <string name="stay_home">Stay Home</string>
+    <string name="stay_safe">Stay Safe</string>
+    <string name="content">Content</string>
+    <string name="hospital">Hospital</string>
+    <string name="doctor">Doctors</string>
+    <string name="emergency">Emergency</string>
+    <string name="test_lab">Test Lab</string>
+    <string name="services">Services</string>
+    <string name="live_update">Live Update</string>
+    <string name="about_corona_virus">about Corona Virus</string>
+    <string name="togo">GoTo</string>
+    <string name="symptoms_nabout_corona">Symptoms\nabout Corona</string>
+    <string name="learn_more">Learn More</string>
+    <string name="todo">TODO</string>
 </resources>

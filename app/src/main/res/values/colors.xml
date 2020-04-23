@@ -3,4 +3,15 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <color name="colorBG">#0E3360</color>
+    <color name="colorSearch">#284773</color>
+    <color name="colorWhite">#F2F5FA</color>
+    <color name="colorWhiteLight">#C9E8E9EB</color>
+
+    <color name="colorArrow">#E1686F</color>
+    <color name="colorCard">#DB585D</color>
+    <color name="colorSymptoms">#0C213E</color>
+
+    <color name="colorSymButton">#233750</color>
 </resources>
