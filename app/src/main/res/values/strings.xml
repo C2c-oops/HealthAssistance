@@ -15,4 +15,17 @@
     <string name="symptoms_nabout_corona">Symptoms\nabout Corona</string>
     <string name="learn_more">Learn More</string>
     <string name="todo">TODO</string>
+    <string name="symptoms">Symptoms</string>
+    <string name="prevention">Prevention</string>
+    <string name="mask_info">Cover your nose and mouth with your bent elbow or a tissue when you cough or sneeze and do use of mask in public.</string>
+    <string name="wash_info">Clean your hands often, use soap and water. Also, use an alcohol-based hand rub and make sure it contains at least 70% alcohol composition. </string>
+    <string name="ill_info">If you have a fever, a cough, and difficulty breathing, make yourself self-quarantine and seek medical attention. Call in advance to local medical authority.</string>
+    <string name="distancing_info">Maintain a habit of safe distance from anyone who is coughing or sneezing and make sure the distance is of 1 meter</string>
+    <string name="wear_face_mask">Wear Face Mask</string>
+    <string name="wash_hands_often">Wash Hands</string>
+    <string name="maintain_social_distancing">Social Distancing</string>
+    <string name="if_ill">Self Quarantine</string>
+    <string name="headache">Headache</string>
+    <string name="fever">Fever</string>
+    <string name="cough">Cough</string>
 </resources>
