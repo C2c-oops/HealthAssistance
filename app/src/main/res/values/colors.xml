@@ -14,4 +14,19 @@
     <color name="colorSymptoms">#0C213E</color>
 
     <color name="colorSymButton">#233750</color>
+    <color name="colorSymptoms1">#FF5151</color>
+    <color name="colorHeadPrecaution">#94DD4D</color>
+
+    <color name="colorAffected">#FF083B</color>
+    <color name="colorActive">#017CFF</color>
+    <color name="colorRecovered">#29A746</color>
+    <color name="colorDeceased">#6D767E</color>
+    <color name="colorTested">#3C36AD</color>
+
+    <color name="colorAffectedBG">#FFE0E6</color>
+    <color name="colorActiveBG">#EFF7FF</color>
+    <color name="colorRecoveredBG">#E4F4E8</color>
+    <color name="colorDeceasedBG">#F6F6F7</color>
+    <color name="colorTestedBG">#E3E2F3</color>
+
 </resources>

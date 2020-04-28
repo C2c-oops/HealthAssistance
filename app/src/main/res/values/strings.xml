@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">HealthAssistance</string>
+    <!--API access Tokens and key-->
+    <string name="mapbox_access_token">pk.eyJ1IjoiYzJjLW9vcHMiLCJhIjoiY2s5amdwNXhoMHR0OTNrcTZvajF2am0wOSJ9.RTn_7fSsEtzZo2kfQ_DPFg</string>
+
+    
+    <!---->
+    <string name="user_location_permission_explained">Location permission required for fetching your location.</string>
+    <string name="user_location_permission_not_granted">Location permission not granted</string>
+    
+    
     <string name="profile">Profile</string>
     <string name="stay_home">Stay Home</string>
     <string name="stay_safe">Stay Safe</string>
@@ -20,7 +29,7 @@
     <string name="mask_info">Cover your nose and mouth with your bent elbow or a tissue when you cough or sneeze and do use of mask in public.</string>
     <string name="wash_info">Clean your hands often, use soap and water. Also, use an alcohol-based hand rub and make sure it contains at least 70% alcohol composition. </string>
     <string name="ill_info">If you have a fever, a cough, and difficulty breathing, make yourself self-quarantine and seek medical attention. Call in advance to local medical authority.</string>
-    <string name="distancing_info">Maintain a habit of safe distance from anyone who is coughing or sneezing and make sure the distance is of 1 meter</string>
+    <string name="distancing_info">Maintain a habit of safe distance from anyone who is coughing or sneezing and make sure the distance is of 2 meter.</string>
     <string name="wear_face_mask">Wear Face Mask</string>
     <string name="wash_hands_often">Wash Hands</string>
     <string name="maintain_social_distancing">Social Distancing</string>
@@ -28,4 +37,17 @@
     <string name="headache">Headache</string>
     <string name="fever">Fever</string>
     <string name="cough">Cough</string>
+    <string name="see_details"><u>See details</u></string>
+    <string name="spread_of_virus">Spread of Virus</string>
+    <string name="count">00,000</string>
+    <string name="statistics">Statistics</string>
+    <string name="last_update">Last Update: Date::Time</string>
+    <string name="case_updates">Case Updates</string>
+
+    <string name="affected">Affected</string>
+    <string name="recovered">Recovered</string>
+    <string name="deceased">Deceased</string>
+    <string name="tested">Tested</string>
+    <string name="active">Active</string>
+    <string name="data_source">Data Source:<u> covid19india.org</u></string>
 </resources>
