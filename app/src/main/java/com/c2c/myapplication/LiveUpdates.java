@@ -1,16 +1,23 @@
 package com.c2c.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.mapbox.android.core.permissions.PermissionsListener;
 import com.mapbox.android.core.permissions.PermissionsManager;
@@ -34,43 +41,58 @@ public class LiveUpdates extends AppCompatActivity implements OnMapReadyCallback
 
     public TextView textViewSeeMore;
 
+    private LottieAnimationView lottieAnimationView;
+
+    public LinearLayout linearLayoutMoreData;
+    public CardView cardView;
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Mapbox.getInstance(this, getString(R.string.mapbox_access_token));
         setContentView(R.layout.activity_live_updates);
-        mapView = findViewById(R.id.mapView);
+        mapView = findViewById(R.id.mapViewLU);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
 
         textViewSeeMore = findViewById(R.id.tvLUSeeMore1);
-        textViewSeeMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
-                        LiveUpdates.this, R.style.BottomSheetDialogTheme
-                );
-                View bottomSheetView = LayoutInflater.from(getApplicationContext())
-                        .inflate(R.layout.layout_bottom_sheet,
-                                (RelativeLayout)findViewById(R.id.relativeLayoutBottomSheetContainer)
-                        );
-                bottomSheetDialog.setContentView(bottomSheetView);
-                bottomSheetDialog.show();
+        textViewSeeMore.setOnClickListener(v -> {
+            BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+                    LiveUpdates.this, R.style.BottomSheetDialogTheme
+            );
+            View bottomSheetView = LayoutInflater.from(getApplicationContext())
+                    .inflate(R.layout.layout_bottom_sheet,
+                            findViewById(R.id.relativeLayoutBottomSheetContainer)
+                    );
+            bottomSheetDialog.setContentView(bottomSheetView);
+            bottomSheetDialog.show();
+        });
+
+        lottieAnimationView = findViewById(R.id.lottieViewMore);
+        linearLayoutMoreData = findViewById(R.id.linearLayoutCV1MoreData);
+        cardView = findViewById(R.id.cardViewLU1);
+
+        cardView.setOnClickListener(v -> {
+            if(linearLayoutMoreData.getVisibility()==View.GONE) {
+                TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
+                linearLayoutMoreData.setVisibility(View.VISIBLE);
+                lottieAnimationView.setVisibility(View.GONE);
+            } else{
+                TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
+                linearLayoutMoreData.setVisibility(View.GONE);
+                lottieAnimationView.setVisibility(View.VISIBLE);
             }
         });
+
     }
 
     @Override
     public void onMapReady(@NonNull final MapboxMap mapboxMap) {
         LiveUpdates.this.mapboxMap = mapboxMap;
 
-        mapboxMap.setStyle(Style.MAPBOX_STREETS, new Style.OnStyleLoaded() {
-                    @Override
-                    public void onStyleLoaded(@NonNull Style style) {
-                        enableLocationComponent(style );
-                    }
-                });
+        mapboxMap.setStyle(Style.MAPBOX_STREETS, this::enableLocationComponent);
     }
 
     @SuppressWarnings({"MissingPermission"})
@@ -107,12 +129,7 @@ public class LiveUpdates extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void onPermissionResult(boolean granted) {
         if (granted) {
-            mapboxMap.getStyle(new Style.OnStyleLoaded() {
-                @Override
-                public void onStyleLoaded(@NonNull Style style) {
-                    enableLocationComponent(style);
-                }
-            });
+            mapboxMap.getStyle(this::enableLocationComponent);
         } else {
             Toast.makeText(this, R.string.user_location_permission_not_granted, Toast.LENGTH_SHORT).show();
             finish();

@@ -8,6 +8,7 @@
     <color name="colorSearch">#284773</color>
     <color name="colorWhite">#F2F5FA</color>
     <color name="colorWhiteLight">#C9E8E9EB</color>
+    <color name="colorBlack">#000000</color>
 
     <color name="colorArrow">#E1686F</color>
     <color name="colorCard">#DB585D</color>

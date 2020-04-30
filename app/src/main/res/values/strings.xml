@@ -50,4 +50,5 @@
     <string name="tested">Tested</string>
     <string name="active">Active</string>
     <string name="data_source">Data Source:<u> covid19india.org</u></string>
+    <string name="state">STATE</string>
 </resources>
