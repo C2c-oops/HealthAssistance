@@ -30,4 +30,6 @@
     <color name="colorDeceasedBG">#F6F6F7</color>
     <color name="colorTestedBG">#E3E2F3</color>
 
+    <color name="colorRedZone">#DE3232</color>
+    <color name="colorOrangeZone">#FF8C00</color>
 </resources>

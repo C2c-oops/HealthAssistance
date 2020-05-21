@@ -1,4 +1,4 @@
-package com.c2c.myapplication;
+package com.c2c.myapplication.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+
+import com.c2c.myapplication.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,20 +23,14 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.btnSymptoms);
         button1 = findViewById(R.id.liveUpdateButton);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SymptomsPrecaution.class);
-                startActivity(intent);
-            }
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), SymptomsPrecaution.class);
+            startActivity(intent);
         });
 
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LiveUpdates.class);
-                startActivity(intent);
-            }
+        button1.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), LiveUpdates.class);
+            startActivity(intent);
         });
     }
 }

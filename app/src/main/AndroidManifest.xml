@@ -3,17 +3,17 @@
     package="com.c2c.myapplication">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LiveUpdates" />
-        <activity android:name=".SymptomsPrecaution" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.LiveUpdates" />
+        <activity android:name=".activity.SymptomsPrecaution" />
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

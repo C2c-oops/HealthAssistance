@@ -1,8 +1,10 @@
-package com.c2c.myapplication;
+package com.c2c.myapplication.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.c2c.myapplication.R;
 
 public class SymptomsPrecaution extends AppCompatActivity {
 

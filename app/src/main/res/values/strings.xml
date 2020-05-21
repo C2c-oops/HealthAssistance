@@ -38,8 +38,8 @@
     <string name="fever">Fever</string>
     <string name="cough">Cough</string>
     <string name="see_details"><u>See details</u></string>
-    <string name="spread_of_virus">Spread of Virus</string>
-    <string name="count">00,000</string>
+    <string name="zones">Zones</string>
+    <string name="count">  NA  </string>
     <string name="statistics">Statistics</string>
     <string name="last_update">Last Update: Date::Time</string>
     <string name="case_updates">Case Updates</string>
@@ -49,6 +49,10 @@
     <string name="deceased">Deceased</string>
     <string name="tested">Tested</string>
     <string name="active">Active</string>
-    <string name="data_source">Data Source:<u> covid19india.org</u></string>
+    <string name="data_source">Data Source: <u>covid19india.org</u></string>
     <string name="state">STATE</string>
+    <string name="see_global_data">See Global Data</string>
+    <string name="affected_today">Affected Today</string>
+    <string name="recovered_today">Recovered Today</string>
+    <string name="deceased_today">Deceased Today</string>
 </resources>
