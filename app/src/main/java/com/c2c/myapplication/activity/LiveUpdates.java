@@ -49,8 +49,11 @@ import org.json.JSONObject;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import static com.mapbox.mapboxsdk.style.layers.Property.VISIBLE;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.circleColor;
@@ -58,19 +61,23 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.visibility;
 
 public class LiveUpdates extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener, AdapterView.OnItemSelectedListener {
 
+    private static final String REDZONE = "redzone";
+    private static final String ORANGEZONE = "orangezone";
+
     private PermissionsManager permissionsManager;
     private MapboxMap mapboxMap;
     private MapView mapView;
     private ValueAnimator redZoneColorAnimator;
     private ValueAnimator orangeZoneColorAnimator;
 
-    public TextView textViewSeeMore;
+    TextView textViewSeeMore;
 
-    private LottieAnimationView lottieAnimationView;
+    LottieAnimationView lottieAnimationView;
 
-    public LinearLayout linearLayoutMoreData;
-    public CardView cardView;
-    private SwitchMaterial switchMaterial1, switchMaterial2, switchMaterial3;
+    LinearLayout linearLayoutMoreData;
+    CardView cardView;
+    SwitchMaterial switchMaterial1;
+    SwitchMaterial switchMaterial2;
 
     private Spinner spinner;
 
@@ -150,7 +157,7 @@ public class LiveUpdates extends AppCompatActivity implements OnMapReadyCallback
         requestQueue.add(stringRequest);
     }
 
-    private void getRegionalData(JSONArray j) {
+    private void getRegionalData(@NonNull JSONArray j) {
         for (int i = 1; i < j.length(); i++) {
             try {
                 JSONObject json = j.getJSONObject(i);
@@ -254,20 +261,20 @@ public class LiveUpdates extends AppCompatActivity implements OnMapReadyCallback
     public void onMapReady(@NonNull final MapboxMap mapboxMap) {
         LiveUpdates.this.mapboxMap = mapboxMap;
 
-        //mapboxMap.setStyle(Style.MAPBOX_STREETS, this::enableLocationComponent);
+        /*mapboxMap.setStyle(Style.MAPBOX_STREETS, this::enableLocationComponent);*/
 
         mapboxMap.setStyle(Style.MAPBOX_STREETS, style -> {
             GeoJsonSource redZoneSource = null;
             try {
-                redZoneSource = new GeoJsonSource("redZone", new URI("https://gist.githubusercontent.com/C2c-oops/71b63d6d64319719235042fcbf10fd57/raw/cd29cf24d2efd8d6eb82f442d60392846302fa89/redzonemap.geojson"));
+                redZoneSource = new GeoJsonSource(REDZONE, new URI("https://gist.githubusercontent.com/C2c-oops/71b63d6d64319719235042fcbf10fd57/raw/cd29cf24d2efd8d6eb82f442d60392846302fa89/redzonemap.geojson"));
             } catch (URISyntaxException e) {
                 e.printStackTrace();
             }
             assert redZoneSource != null;
             style.addSource(redZoneSource);
 
-            CircleLayer redZoneLayer = new CircleLayer("redZone", "redZone").withProperties(
-                    circleColor(Color.parseColor("#5a9fcf")),
+            CircleLayer redZoneLayer = new CircleLayer(REDZONE, REDZONE).withProperties(
+                    circleColor(Color.parseColor("#EC8A8A")),
                     visibility(Property.NONE)
             );
 
@@ -293,15 +300,15 @@ public class LiveUpdates extends AppCompatActivity implements OnMapReadyCallback
 
             GeoJsonSource orangeZoneSource = null;
             try {
-                orangeZoneSource = new GeoJsonSource("orangeZone", new URI("https://gist.githubusercontent.com/C2c-oops/4933e34faa844822e8aaf5464077958e/raw/81cf17107b3ed008d8f60c8f9c59c8e1f89c6252/orangezonemap.geojson"));
+                orangeZoneSource = new GeoJsonSource(ORANGEZONE, new URI("https://gist.githubusercontent.com/C2c-oops/4933e34faa844822e8aaf5464077958e/raw/81cf17107b3ed008d8f60c8f9c59c8e1f89c6252/orangezonemap.geojson"));
             } catch (URISyntaxException e) {
                 e.printStackTrace();
             }
             assert orangeZoneSource != null;
             style.addSource(orangeZoneSource);
 
-            CircleLayer orangeZoneLayer = new CircleLayer("orangeZone", "orangeZone").withProperties(
-                    circleColor(Color.parseColor("#5a9fcf")),
+            CircleLayer orangeZoneLayer = new CircleLayer(ORANGEZONE, ORANGEZONE).withProperties(
+                    circleColor(Color.parseColor("#FFC680")),
                     visibility(Property.NONE)
             );
 
@@ -325,8 +332,8 @@ public class LiveUpdates extends AppCompatActivity implements OnMapReadyCallback
                     );
                 }
             });
-            switchMaterial1.setOnCheckedChangeListener((buttonView, isChecked) -> setLayerVisible("redZone", style));
-            switchMaterial2.setOnCheckedChangeListener((buttonView, isChecked) -> setLayerVisible("orangeZone", style));
+            switchMaterial1.setOnCheckedChangeListener((buttonView, isChecked) -> setLayerVisible(REDZONE, style));
+            switchMaterial2.setOnCheckedChangeListener((buttonView, isChecked) -> setLayerVisible(ORANGEZONE, style));
 
             enableLocationComponent(style);
             redZoneColorAnimator.start();
@@ -449,14 +456,16 @@ public class LiveUpdates extends AppCompatActivity implements OnMapReadyCallback
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        tvSConfirm.setText(getConfirmed(position + 1));
-        tvSRecover.setText(getRecovered(position + 1));
-        tvSDeath.setText(getDeaths(position + 1));
-        tvSActive.setText(getActive(position + 1));
+        NumberFormat nf = NumberFormat.getNumberInstance();
+        nf.setGroupingUsed(true);
+        tvSConfirm.setText(nf.format(Integer.parseInt(getConfirmed(position+1))));
+        tvSRecover.setText(nf.format(Integer.parseInt(getRecovered(position+1))));
+        tvSDeath.setText(nf.format(Integer.parseInt(getDeaths(position + 1))));
+        tvSActive.setText(nf.format(Integer.parseInt(getActive(position + 1))));
         tvSDateTime.setText(getDateTime(position + 1));
-        tvSDeltaConfirm.setText(getDeltaConfirm(position + 1));
-        tvSDeltaRecover.setText(getDeltaRecover(position + 1));
-        tvSDeltaDeath.setText(getDeltaDeath(position + 1));
+        tvSDeltaConfirm.setText(nf.format(Integer.parseInt(getDeltaConfirm(position + 1))));
+        tvSDeltaRecover.setText(nf.format(Integer.parseInt(getDeltaRecover(position + 1))));
+        tvSDeltaDeath.setText(nf.format(Integer.parseInt(getDeltaDeath(position + 1))));
     }
 
     @SuppressLint("SetTextI18n")

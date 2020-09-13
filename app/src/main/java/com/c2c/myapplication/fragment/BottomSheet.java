@@ -22,6 +22,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.NumberFormat;
+
 public class BottomSheet extends BottomSheetDialogFragment {
 
     private TextView tVDateTime, tVAffectCount, tVDAffect, tVTestCount,
@@ -50,6 +52,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
     }
 
     private void getTotalData() {
+        NumberFormat nf = NumberFormat.getNumberInstance();
         @SuppressLint("SetTextI18n")
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, Config.DATA_URL, null,
                 response -> {
@@ -66,14 +69,15 @@ public class BottomSheet extends BottomSheetDialogFragment {
                             String deltarecoveri = json.getString(Config.TAG_DRECOVERED);
                             String deltadeathi = json.getString(Config.TAG_DDEATHS);
 
-                            tVAffectCount.setText(confirmi);
-                            tVRecoverCount.setText(recoveri);
-                            tVDeceaseCount.setText(deathi);
-                            tVActiveCount.setText(activei);
+                            nf.setGroupingUsed(true);
+                            tVAffectCount.setText(nf.format(Integer.parseInt(confirmi)));
+                            tVRecoverCount.setText(nf.format(Integer.parseInt(recoveri)));
+                            tVDeceaseCount.setText(nf.format(Integer.parseInt(deathi)));
+                            tVActiveCount.setText(nf.format(Integer.parseInt(activei)));
                             tVDateTime.setText(datetimei);
-                            tVDAffect.setText("+"+deltaconfirmi);
-                            tVDRecover.setText("+"+deltarecoveri);
-                            tVDDecease.setText("+"+deltadeathi);
+                            tVDAffect.setText(nf.format(Integer.parseInt("+"+deltaconfirmi)));
+                            tVDRecover.setText(nf.format(Integer.parseInt("+"+deltarecoveri)));
+                            tVDDecease.setText(nf.format(Integer.parseInt("+"+deltadeathi)));
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -84,7 +88,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
                     try {
                         JSONObject jsonArray = response.getJSONObject(Config.JSON_TOBJECT);
                         String tested = jsonArray.getString(Config.TAG_TESTED);
-                        tVTestCount.setText(tested);
+                        tVTestCount.setText(nf.format(Integer.parseInt(tested)));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

@@ -70,26 +70,33 @@
                     android:layout_height="wrap_content"
                     android:text="@string/affected"
                     android:textColor="@color/colorAffected"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:layout_centerHorizontal="true"/>
 
-                <com.airbnb.lottie.LottieAnimationView
-                    android:id="@+id/lottieBS1"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:lottie_autoPlay="true"
-                    app:lottie_fileName="deltaa.json"
-                    app:lottie_loop="true"
-                    android:layout_toEndOf="@+id/tvAffected"
-                    android:layout_marginStart="5dp"/>
+                    android:layout_below="@+id/tvAffected"
+                    android:orientation="horizontal"
+                    android:layout_centerHorizontal="true">
 
-                <TextView
-                    android:id="@+id/tvDeltaAffectCountIndia"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/lottieBS1"
-                    android:layout_marginTop="2dp"
-                    android:textSize="12sp"
-                    android:textColor="@color/colorAffected"/>
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/lottieBS1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:lottie_autoPlay="true"
+                        app:lottie_fileName="deltaa.json"
+                        app:lottie_loop="true" />
+
+                    <TextView
+                        android:id="@+id/tvDeltaAffectCountIndia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/colorAffected" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/tvAffectCountIndia"
@@ -100,7 +107,8 @@
                     android:text="@string/count"
                     android:textColor="@color/colorAffected"
                     android:textSize="25sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"/>
 
             </RelativeLayout>
 
@@ -130,7 +138,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/tested"
                     android:textColor="@color/colorTested"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:layout_centerHorizontal="true"/>
 
                 <TextView
                     android:id="@+id/tvTestCountIndia"
@@ -141,7 +150,8 @@
                     android:text="@string/count"
                     android:textColor="@color/colorTested"
                     android:textSize="25sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"/>
 
             </RelativeLayout>
 
@@ -181,7 +191,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/active"
                     android:textColor="@color/colorActive"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:layout_centerHorizontal="true"/>
 
                 <TextView
                     android:id="@+id/tvActiveCountIndia"
@@ -192,7 +203,8 @@
                     android:text="@string/count"
                     android:textColor="@color/colorActive"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"/>
 
             </RelativeLayout>
 
@@ -222,26 +234,33 @@
                     android:layout_height="wrap_content"
                     android:text="@string/recovered"
                     android:textColor="@color/colorRecovered"
-                    android:textSize="12sp" />
-
-                <com.airbnb.lottie.LottieAnimationView
-                    android:id="@+id/lottieBS4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:lottie_autoPlay="true"
-                    app:lottie_fileName="deltar.json"
-                    app:lottie_loop="true"
-                    android:layout_toEndOf="@+id/tvRecover"
-                    android:layout_marginStart="5dp"/>
-
-                <TextView
-                    android:id="@+id/tvDeltaRecoverCountIndia"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/lottieBS4"
-                    android:layout_marginTop="1dp"
                     android:textSize="12sp"
-                    android:textColor="@color/colorRecovered"/>
+                    android:layout_centerHorizontal="true"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvRecover"
+                    android:orientation="horizontal"
+                    android:layout_centerHorizontal="true">
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/lottieBS4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:lottie_autoPlay="true"
+                        app:lottie_fileName="deltar.json"
+                        app:lottie_loop="true" />
+
+                    <TextView
+                        android:id="@+id/tvDeltaRecoverCountIndia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/colorRecovered" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/tvRecoverCountIndia"
@@ -252,7 +271,8 @@
                     android:text="@string/count"
                     android:textColor="@color/colorRecovered"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"/>
 
             </RelativeLayout>
 
@@ -282,26 +302,33 @@
                     android:layout_height="wrap_content"
                     android:text="@string/deceased"
                     android:textColor="@color/colorDeceased"
-                    android:textSize="12sp" />
-
-                <com.airbnb.lottie.LottieAnimationView
-                    android:id="@+id/lottieBS5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:lottie_autoPlay="true"
-                    app:lottie_fileName="deltad.json"
-                    app:lottie_loop="true"
-                    android:layout_toEndOf="@+id/tvDeceased"
-                    android:layout_marginStart="5dp"/>
-
-                <TextView
-                    android:id="@+id/tvDeltaDeceasedCountIndia"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/lottieBS5"
-                    android:layout_marginTop="1dp"
                     android:textSize="12sp"
-                    android:textColor="@color/colorDeceased"/>
+                    android:layout_centerHorizontal="true"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvDeceased"
+                    android:orientation="horizontal"
+                    android:layout_centerHorizontal="true">
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/lottieBS5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:lottie_autoPlay="true"
+                        app:lottie_fileName="deltad.json"
+                        app:lottie_loop="true" />
+
+                    <TextView
+                        android:id="@+id/tvDeltaDeceasedCountIndia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:textSize="12sp"
+                        android:textColor="@color/colorDeceased" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/tvDeceasedCountIndia"
@@ -312,7 +339,8 @@
                     android:text="@string/count"
                     android:textColor="@color/colorDeceased"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"/>
 
             </RelativeLayout>
 
